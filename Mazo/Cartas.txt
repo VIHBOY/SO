@@ -1,0 +1,108 @@
+0 Rojo
+1 Rojo
+2 Rojo
+3 Rojo
+4 Rojo
+5 Rojo
+6 Rojo
+7 Rojo
+8 Rojo
+9 Rojo
++2 Rojo
+Reversa Rojo
+Salto Rojo
+0 Azul
+1 Azul
+2 Azul
+3 Azul
+4 Azul
+5 Azul
+6 Azul
+7 Azul
+8 Azul
+9 Azul
++2 Azul
+Reversa Azul
+Salto Azul
+0 Verde
+1 Verde
+2 Verde
+3 Verde
+4 Verde
+5 Verde
+6 Verde
+7 Verde
+8 Verde
+9 Verde
++2 Verde
+Reversa Verde
+Salto Verde
+0 Amarilla
+1 Amarilla
+2 Amarilla
+3 Amarilla
+4 Amarilla
+5 Amarilla
+6 Amarilla
+7 Amarilla
+8 Amarilla
+9 Amarilla
++2 Amarilla
+Reversa Amarilla
+Salto Amarilla
+1 Rojo 2
+2 Rojo 2
+3 Rojo 2
+4 Rojo 2
+5 Rojo 2
+6 Rojo 2
+7 Rojo 2
+8 Rojo 2
+9 Rojo 2
++2 Rojo 2
+Reversa Rojo 2
+Salto Rojo 2
+1 Azul 2
+2 Azul 2
+3 Azul 2
+4 Azul 2
+5 Azul 2
+6 Azul 2
+7 Azul 2
+8 Azul 2
+9 Azul 2
++2 Azul 2
+Reversa Azul 2
+Salto Azul 2
+1 Verde 2
+2 Verde 2
+3 Verde 2
+4 Verde 2
+5 Verde 2
+6 Verde 2
+7 Verde 2
+8 Verde 2
+9 Verde 2
++2 Verde 2
+Reversa Verde 2
+Salto Verde 2
+1 Amarilla 2
+2 Amarilla 2
+3 Amarilla 2
+4 Amarilla 2
+5 Amarilla 2
+6 Amarilla 2
+7 Amarilla 2
+8 Amarilla 2
+9 Amarilla 2
++2 Amarilla 2
+Reversa Amarilla 2
+Salto Amarilla 2
+Colores Negro
+Colores Negro 2
+Colores Negro 3
+Colores Negro 4
++4 Negro
++4 Negro 2
++4 Negro 3
++4 Negro 4 
