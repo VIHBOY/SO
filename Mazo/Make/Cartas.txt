@@ -37,19 +37,19 @@ Salto Azul.txt
 +2 Verde.txt
 Reversa Verde.txt
 Salto Verde.txt
-0 Ama.txt
-1 Ama.txt
-2 Ama.txt
-3 Ama.txt
-4 Ama.txt
-5 Ama.txt
-6 Ama.txt
-7 Ama.txt
-8 Ama.txt
-9 Ama.txt
-+2 Ama.txt
-Reversa Ama.txt
-Salto Ama.txt
+0 Amarilla.txt
+1 Amarilla.txt
+2 Amarilla.txt
+3 Amarilla.txt
+4 Amarilla.txt
+5 Amarilla.txt
+6 Amarilla.txt
+7 Amarilla.txt
+8 Amarilla.txt
+9 Amarilla.txt
++2 Amarilla.txt
+Reversa Amarilla.txt
+Salto Amarilla.txt
 1 Rojo 2.txt
 2 Rojo 2.txt
 3 Rojo 2.txt
@@ -86,18 +86,18 @@ Salto Azul 2.txt
 +2 Verde 2.txt
 Reversa Verde 2.txt
 Salto Verde 2.txt
-2 Ama 2.txt
-1 Ama 2.txt
-3 Ama 2.txt
-4 Ama 2.txt
-5 Ama 2.txt
-6 Ama 2.txt
-7 Ama 2.txt
-8 Ama 2.txt
-9 Ama 2.txt
-+2 Ama 2.txt
-Reversa Ama 2.txt
-Salto Ama 2.txt
+2 Amarilla 2.txt
+1 Amarilla 2.txt
+3 Amarilla 2.txt
+4 Amarilla 2.txt
+5 Amarilla 2.txt
+6 Amarilla 2.txt
+7 Amarilla 2.txt
+8 Amarilla 2.txt
+9 Amarilla 2.txt
++2 Amarilla 2.txt
+Reversa Amarilla 2.txt
+Salto Amarilla 2.txt
 Colores Negro.txt
 Colores Negro 2.txt
 Colores Negro 3.txt
