@@ -5,14 +5,12 @@
 #include <time.h>    // time()
 #define MAXSTRLEN 208
 #define MAXWORD 3
-
 typedef struct{
 	char* color;
 	char* numero;
 	char* tipo;
 	char* nombre;
 }Carta;
-
 Carta new_Carta(char* c, char* n, char* t){
 	Carta card;
 	char nombre[90];
@@ -41,7 +39,6 @@ Carta new_Carta(char* c, char* n, char* t){
 	strcpy(card.nombre,nombre);
 	return card;
 }
-
 void Carta_creado(Carta card){
 	FILE* fp;
 	fp=fopen(card.nombre,"w");
@@ -74,6 +71,11 @@ typedef struct{
 void LList_clear(LinkedList* list){
 	Element* pnt=list->tail;
 	int i,lim=list->size-1;
+	free((void*)pnt->card.nombre);
+	free((void*)pnt->card.color);
+	free((void*)pnt->card.tipo);
+	free((void*)pnt->card.numero);
+	free(pnt->next);
 	for(i=0;i<lim;i++){
 		pnt=pnt->prev;
 		free((void*)pnt->card.nombre);
@@ -163,38 +165,6 @@ int LList_moveTo(LinkedList* list,int pos){
 	list->index=pos;
 	return pos;
 }
-char* getcard(){
-  char* color;
-  char result[10];
-  char Carta_final[30];
-  char *Carta_final2= malloc(sizeof(char)*40);
-  int x2=rand() % (9 + 1 - 0) + 0;
-  int x=rand() % (3 + 1 - 0) + 0;
-  sprintf(result,"%d",x2);
-  switch (x) {
-    case 0:
-      color=" Rojo";
-      strcpy(Carta_final,strcat(result,color));
-      strcpy(Carta_final2,strcat(Carta_final,".txt"));
-      return Carta_final2;
-    case 1:
-      color=" Verde";
-      strcpy(Carta_final,strcat(result,color));
-      strcpy(Carta_final2,strcat(Carta_final,".txt"));
-      return Carta_final2;
-    case 2:
-      color=" Ama";
-      strcpy(Carta_final,strcat(result,color));
-      strcpy(Carta_final2,strcat(Carta_final,".txt"));
-      return Carta_final2;
-    case  3:
-      color=" Azul";
-      strcpy(Carta_final,strcat(result,color));
-      strcpy(Carta_final2,strcat(Carta_final,".txt"));
-      return Carta_final2;
-  }
-
-}
 int LList_remove(LinkedList* list){
 	Element* curr=list->curr;
 	if(curr->prev!=NULL){
@@ -211,6 +181,7 @@ int LList_remove(LinkedList* list){
 		list->curr=list->tail;
 		list->index--;
 	}
+	free(curr);
 	return list->size--;
 }
 void LList_reLink(LinkedList* dest,LinkedList* from){
@@ -218,30 +189,67 @@ void LList_reLink(LinkedList* dest,LinkedList* from){
 	LList_remove(from);
 	LList_append(dest,data);
 }
-
 void repartir(Carta* card, int jugador) {
-  char ruta1[]= "/home/sida/Desktop/GIT/SO2/SO/Jugador 1/";
-  char ruta2[]= "/home/sida/Desktop/GIT/SO2/SO/Jugador 2/";
-  char ruta3[]= "/home/sida/Desktop/GIT/SO2/SO/Jugador 3/";
-  char ruta4[]= "/home/sida/Desktop/GIT/SO2/SO/Jugador 4/";
-  char origen[]= "/home/sida/Desktop/GIT/SO2/SO/Mazo/";
-	if (jugador==1) {
-    rename(strcat(origen,card->nombre),strcat(ruta1,card->nombre));
-  }
-  }
+  char name[100]="";
+  char name2[100]="";
+  char ruta1[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 1/";
+  char ruta2[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 2/";
+  char ruta3[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 3/";
+  char ruta4[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 4/";
+  char origen[]= "/home/joaquin.concha/Escritorio/GIT/SO/Mazo/";
+  if (jugador==1) {
+	 strcat(name2,ruta1);
+ 	 strcat(name2,card->nombre);
+	 strcat(name,origen);
+	 strcat(name,card->nombre);
+     rename(name,name2);
+	}
+  if (jugador==2) {
+	 strcat(name2,ruta2);
+  	 strcat(name2,card->nombre);
+ 	 strcat(name,origen);
+ 	 strcat(name,card->nombre);
+	 rename(name,name2);
+	}
+ if (jugador==3) {
+	 strcat(name2,ruta3);
+ 	 strcat(name2,card->nombre);
+	 strcat(name,origen);
+	 strcat(name,card->nombre);
+	 rename(name,name2);
+ 	}
+ if (jugador==4) {
+	 strcat(name2,ruta4);
+ 	 strcat(name2,card->nombre);
+	 strcat(name,origen);
+	 strcat(name,card->nombre);
+	 rename(name,name2);
+ 	}
+	}
+void MoverCarta(LinkedList* Mazo, int pos){
+
+}
 int main ( int argc, char **argv )
 {
  	FILE *fp;
 	char arr[MAXWORD][MAXSTRLEN+1] = {0};
 	int i=0;
+	time_t t;
+	srand((unsigned) time(&t));
  	char buffer[100];
 	char delim[] = " ";
 	char* pch;
  	fp = fopen ("Cartas.txt","r");
 	LinkedList* Mazo=(LinkedList*)malloc(sizeof(LinkedList));
 	LinkedList* J1=(LinkedList*)malloc(sizeof(LinkedList));
+	LinkedList* J2=(LinkedList*)malloc(sizeof(LinkedList));
+	LinkedList* J3=(LinkedList*)malloc(sizeof(LinkedList));
+	LinkedList* J4=(LinkedList*)malloc(sizeof(LinkedList));
 	*Mazo=new_LList();
 	*J1=new_LList();
+	*J2=new_LList();
+	*J3=new_LList();
+	*J4=new_LList();
   while (fgets(buffer, 100, fp) != NULL){
 		pch = strtok (buffer," ");
 		while (pch != NULL && i < MAXWORD)
@@ -251,13 +259,36 @@ int main ( int argc, char **argv )
 		LList_append(Mazo,*Cartita);
 		i=0;free(Cartita);
 	}
-	repartir(Cartaactual(Mazo),1);
-	LList_reLink(J1,Mazo);
-	LList_printAll(J1);
+	Llist_makedir(Mazo);
+	int count;
+	for ( count = 0; count < 7; count++) {
+		int numero_carta=rand()%Mazo->size;
+		LList_moveTo(Mazo,numero_carta);
+		repartir(Cartaactual(Mazo),1);
+		LList_reLink(J1,Mazo);
+		int numero_carta2=rand()%Mazo->size;
+		LList_moveTo(Mazo,numero_carta2);
+		repartir(Cartaactual(Mazo),2);
+		LList_reLink(J2,Mazo);
+		int numero_carta3=rand()%Mazo->size;
+		LList_moveTo(Mazo,numero_carta3);
+		repartir(Cartaactual(Mazo),3);
+		LList_reLink(J3,Mazo);
+		int numero_carta4=rand()%Mazo->size;
+		LList_moveTo(Mazo,numero_carta4);
+		repartir(Cartaactual(Mazo),4);
+		LList_reLink(J4,Mazo);
+	}
 	printf("------------------\n");
-	LList_printAll(Mazo);
 	LList_clear(Mazo);
+	LList_clear(J1);
+	LList_clear(J2);
+	LList_clear(J3);
+	LList_clear(J4);
 	free(J1);
+	free(J2);
+	free(J3);
+	free(J4);
 	free(Mazo);
  	fclose (fp);
 return 0;
