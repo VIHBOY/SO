@@ -237,7 +237,7 @@ int main ( int argc, char **argv )
  	char buffer[100];
 	char delim[] = " ";
 	char* pch;
- 	fp = fopen ("Cartas2.txt","r");
+ 	fp = fopen ("Cartas.txt","r");
 	LinkedList* Mazo=(LinkedList*)malloc(sizeof(LinkedList));
 	LinkedList* J1=(LinkedList*)malloc(sizeof(LinkedList));
 	*Mazo=new_LList();
