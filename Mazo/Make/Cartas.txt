@@ -1,0 +1,108 @@
+0 Rojo.txt
+2 Rojo.txt
+1 Rojo.txt
+3 Rojo.txt
+4 Rojo.txt
+5 Rojo.txt
+6 Rojo.txt
+7 Rojo.txt
+9 Rojo.txt
+8 Rojo.txt
++2 Rojo.txt
+Reversa Rojo.txt
+Salto Rojo.txt
+0 Azul.txt
+1 Azul.txt
+2 Azul.txt
+3 Azul.txt
+5 Azul.txt
+4 Azul.txt
+6 Azul.txt
+7 Azul.txt
+8 Azul.txt
+9 Azul.txt
++2 Azul.txt
+Reversa Azul.txt
+Salto Azul.txt
+0 Verde.txt
+1 Verde.txt
+2 Verde.txt
+3 Verde.txt
+4 Verde.txt
+5 Verde.txt
+6 Verde.txt
+8 Verde.txt
+7 Verde.txt
+9 Verde.txt
++2 Verde.txt
+Reversa Verde.txt
+Salto Verde.txt
+0 Amarilla.txt
+1 Amarilla.txt
+2 Amarilla.txt
+3 Amarilla.txt
+4 Amarilla.txt
+5 Amarilla.txt
+6 Amarilla.txt
+7 Amarilla.txt
+8 Amarilla.txt
+9 Amarilla.txt
++2 Amarilla.txt
+Reversa Amarilla.txt
+Salto Amarilla.txt
+1 Rojo 2.txt
+2 Rojo 2.txt
+3 Rojo 2.txt
+4 Rojo 2.txt
+5 Rojo 2.txt
+6 Rojo 2.txt
+7 Rojo 2.txt
+8 Rojo 2.txt
+9 Rojo 2.txt
++2 Rojo 2.txt
+Reversa Rojo 2.txt
+Salto Rojo 2.txt
+1 Azul 2.txt
+2 Azul 2.txt
+3 Azul 2.txt
+4 Azul 2.txt
+5 Azul 2.txt
+6 Azul 2.txt
+7 Azul 2.txt
+8 Azul 2.txt
+9 Azul 2.txt
++2 Azul 2.txt
+Reversa Azul 2.txt
+Salto Azul 2.txt
+1 Verde 2.txt
+2 Verde 2.txt
+3 Verde 2.txt
+4 Verde 2.txt
+6 Verde 2.txt
+5 Verde 2.txt
+8 Verde 2.txt
+7 Verde 2.txt
+9 Verde 2.txt
++2 Verde 2.txt
+Reversa Verde 2.txt
+Salto Verde 2.txt
+2 Amarilla 2.txt
+1 Amarilla 2.txt
+3 Amarilla 2.txt
+4 Amarilla 2.txt
+5 Amarilla 2.txt
+6 Amarilla 2.txt
+7 Amarilla 2.txt
+8 Amarilla 2.txt
+9 Amarilla 2.txt
++2 Amarilla 2.txt
+Reversa Amarilla 2.txt
+Salto Amarilla 2.txt
+Colores Negro.txt
+Colores Negro 2.txt
+Colores Negro 3.txt
+Colores Negro 4.txt
++4 Negro 2.txt
++4 Negro.txt
++4 Negro 3.txt
++4 Negro 4.txt

@@ -18,10 +18,10 @@ int main(int argc, char const *argv[]) {
         case -1:
           break;
         default: /*Padre*/
-          close(fd[1])
+          close(fd[1]);
           num=read(fd[0],buf,20);
-          printf("%b %s\n",num );
-          close(fd[0]):
+          printf("%d %s\n",num,buf);
+          close(fd[0]);
           break;
       }
   return 0;
