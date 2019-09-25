@@ -50,6 +50,9 @@ int main ( int argc, char **argv )
 	MoverCarta(Mazo,rand()%Mazo->size,Ultima,5);
 	printf("------------------\n");
 	Llist_deletedir2(J1,1);
+    Llist_deletedir2(J2,2);
+    Llist_deletedir2(J3,3);
+    Llist_deletedir2(J4,4);
 	LList_clear(Mazo);
 	LList_clear(J1);
 	LList_clear(J2);

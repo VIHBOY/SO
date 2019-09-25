@@ -226,11 +226,27 @@ void MoverCarta(LinkedList* Mazo, int numero_carta,LinkedList* Jugador,int numer
 void Carta_borrado2(Carta card, int jugador){
 		char name2[100]="";
 		char ruta1[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 1/";
+		char ruta2[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 2/";
+		char ruta3[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 3/";
+		char ruta4[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 4/";
 	    if (jugador==1) {
-		 printf("aaa\n" );
 	  	 strcat(name2,ruta1);
 	  	 strcat(name2,strtok(card.nombre,"\n"));
-		 printf("%s\n",name2 );
+	  	 remove(name2);
+	  	}
+		if (jugador==2) {
+	  	 strcat(name2,ruta2);
+	  	 strcat(name2,strtok(card.nombre,"\n"));
+	  	 remove(name2);
+	  	}
+		if (jugador==3) {
+	  	 strcat(name2,ruta3);
+	  	 strcat(name2,strtok(card.nombre,"\n"));
+	  	 remove(name2);
+	  	}
+		if (jugador==4) {
+	  	 strcat(name2,ruta4);
+	  	 strcat(name2,strtok(card.nombre,"\n"));
 	  	 remove(name2);
 	  	}
 	}
