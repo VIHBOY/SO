@@ -17,9 +17,7 @@ int main ( int argc, char **argv )
  	char buffer[100];
 	char delim[] = " ";
 	char* pch;
-  
  	fp = fopen ("Cartas.txt","r");
-
 	LinkedList* Mazo=(LinkedList*)malloc(sizeof(LinkedList));
 	LinkedList* J1=(LinkedList*)malloc(sizeof(LinkedList));
 	LinkedList* J2=(LinkedList*)malloc(sizeof(LinkedList));
@@ -52,7 +50,6 @@ int main ( int argc, char **argv )
 	printf("------------------\n");
 
     int pid, pid1, pid2;
-
     pid = fork();
     if (pid == 0) {
         sleep(3);

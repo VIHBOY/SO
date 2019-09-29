@@ -3,7 +3,6 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <time.h>
-#include<unistd.h>
 #define MAXSTRLEN 208
 #define MAXWORD 3
 #include "lista.h"
@@ -177,53 +176,41 @@ void repartir(Carta* card, int jugador) {
   char name[100]="";
   char name2[100]="";
 	char dir[100]="";
-  char origen[]= "/home/sida/Desktop/GIT/SO2/SO/Mazo/";
+  char ruta1[]= "./Jugador 1/";
+  char ruta2[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 2/";
+  char ruta3[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 3/";
+  char ruta4[]= "/home/joaquin.concha/Escritorio/GIT/SO/Jugador 4/";
+  char rutaUltima[]= "/home/joaquin.concha/Escritorio/GIT/SO/Ultima Carta/";
+  char origen[]= "/home/joaquin.concha/Escritorio/GIT/SO/Mazo/";
   if (jugador==1) {
-	 chdir("..");
-	 chdir("Jugador 1/");
-	 printf("%s\n",getcwd(dir, 100));
-	 strcat(name2,getcwd(dir, 100));
-	 strcat(name2,"/");
+	 chdir("..")
+	 chdir("/Jugador 1");
+	 printf("%s\n",getcwd(s, 100));
+	 strcat(name2,ruta1);
  	 strcat(name2,card->nombre);
-	 printf("%s\n",name2 );
 	 strcat(name,origen);
 	 strcat(name,card->nombre);
-   rename(name,name2);
+     rename(name,name2);
 	}
   if (jugador==2) {
-		chdir("..");
-		chdir("Jugador 2/");
-		printf("%s\n",getcwd(dir, 100));
-		strcat(name2,getcwd(dir, 100));
-		strcat(name2,"/");
-		strcat(name2,card->nombre);
-		printf("%s\n",name2 );
-		strcat(name,origen);
-		strcat(name,card->nombre);
-		rename(name,name2);
+	 strcat(name2,ruta2);
+  	 strcat(name2,card->nombre);
+ 	 strcat(name,origen);
+ 	 strcat(name,card->nombre);
+	 rename(name,name2);
 	}
  if (jugador==3) {
-	 chdir("..");
-	 chdir("Jugador 3/");
-	 printf("%s\n",getcwd(dir, 100));
-	strcat(name2,getcwd(dir, 100));
-	strcat(name2,"/");
-		strcat(name2,card->nombre);
-	printf("%s\n",name2 );
-	strcat(name,origen);
-	strcat(name,card->nombre);
+	 strcat(name2,ruta3);
+ 	 strcat(name2,card->nombre);
+	 strcat(name,origen);
+	 strcat(name,card->nombre);
 	 rename(name,name2);
  	}
  if (jugador==4) {
-	 chdir("..");
-	 chdir("Jugador 4/");
-	 printf("%s\n",getcwd(dir, 100));
-	strcat(name2,getcwd(dir, 100));
-	strcat(name2,"/");
-		strcat(name2,card->nombre);
-	printf("%s\n",name2 );
-	strcat(name,origen);
-	strcat(name,card->nombre);
+	 strcat(name2,ruta4);
+ 	 strcat(name2,card->nombre);
+	 strcat(name,origen);
+	 strcat(name,card->nombre);
 	 rename(name,name2);
  	}
  if (jugador==5) {
