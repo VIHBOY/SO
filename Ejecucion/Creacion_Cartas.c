@@ -15,9 +15,7 @@ int main ( int argc, char **argv )
 	time_t t;
 	srand((unsigned) time(&t));
  	char buffer[100];
-	char delim[] = " ";
 	char* pch;
-
  	fp = fopen ("Cartas.txt","r");
   char cwd[256] = "";
   chdir("..");
