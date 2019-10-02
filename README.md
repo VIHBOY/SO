@@ -43,10 +43,10 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
 ## Autores ✒️
 
 * **Joaquin Concha** - 201773569-4 *VIHBOY*
-  _Funciones referentes a Cartas, main__
-    Carta new_Carta(char* c, char* n, char* t);
-    void Carta_creado(Carta card);
-    void Carta_print(Carta card) ;
+  _Funciones referentes a Cartas, main  
+    Carta new_Carta(char* c, char* n, char* t);  
+    void Carta_creado(Carta card);  
+    void Carta_print(Carta card) ;  
     void Carta_borrado(Carta card);_
 * **Renato Bassi** - 201773521-K *SIDABOY-bassisi*
   _Funciones referentes a listas, creacion_
