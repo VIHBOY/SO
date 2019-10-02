@@ -43,7 +43,7 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
 ## Autores ✒️
 
 * **Joaquin Concha** - 201773569-4 *VIHBOY*
-   _Funciones referentes a Cartas, main  
+   -_Funciones referentes a Cartas, main  
         -Carta new_Carta(char* c, char* n, char* t);  
         -void Carta_creado(Carta card); 
         -Carta* Cartaactual(LinkedList* list);  
@@ -55,7 +55,7 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
         -void Llist_deletedir2(LinkedList* list, int njugador);    
         -int crearCarpeta(const char *dir, const mode_t mode);_
 * **Renato Bassi** - 201773521-K *SIDABOY-bassisi*
-  _Funciones referentes a listas, creacion_
+  -_Funciones referentes a listas, creacion_  
         -Element new_Element();  
         -void LList_clear(LinkedList* list);  
         -LinkedList new_LList();  
