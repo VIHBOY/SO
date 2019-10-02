@@ -44,12 +44,12 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
 
 * **Joaquin Concha** - 201773569-4 *VIHBOY*
    -_Funciones referentes a Cartas, main  
-        -Carta new_Carta(char* c, char* n, char* t);  
-        -void Carta_creado(Carta card); 
-        -Carta* Cartaactual(LinkedList* list);  
+        -Carta new_Carta(char* c, char* n, char* t);    
+        -void Carta_creado(Carta card);   
+        -Carta* Cartaactual(LinkedList* list);    
         -void Carta_print(Carta card) ;  
         -void Carta_borrado(Carta card);  
-        -void repartir(Carta* card, int jugador) ;  
+        -void repartir(Carta* card, int jugador);    
         -void MoverCarta(LinkedList* Mazo, int numero_carta,LinkedList* Jugador,int numero_jugador);  
         -void Carta_borrado2(Carta card, int jugador );  
         -void Llist_deletedir2(LinkedList* list, int njugador);    
