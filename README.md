@@ -43,4 +43,6 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
 ## Autores ✒️
 
 * **Joaquin Concha** - 201773569-4 *VIHBOY*
+  _Funciones referentes a Cartas, main_
 * **Renato Bassi** - 201773521-K *SIDABOY-bassisi*
+  _Funciones referentes a listas, creacion_
