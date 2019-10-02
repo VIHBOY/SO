@@ -1,6 +1,6 @@
-# Título del Proyecto
+# Tarea 1 SO UNO
 
-_Acá va un párrafo que describa lo que es el proyecto_
+_Primer Entregable de la tarea de Sistema Operativo_
 
 ## Comenzando 🚀
 
