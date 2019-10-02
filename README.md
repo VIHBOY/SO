@@ -24,35 +24,18 @@ cd SO
 cd Ejecucion
 make
 ```
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
 ```
-Da un ejemplo
+./Creacion_Cartas
 ```
+_Se crearan carpetas para cada jugardor en la raiz de SO, además de carpetas para mazo y ultima carta_
 
-### Y las pruebas de estilo de codificación ⌨️
+## Notas 📦
 
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Deployment 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
+_Se reparten Cartas a cada jugador, y por ultimo a ultima carta_
 
 ## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [Atom] - Editor de texto
 
@@ -61,8 +44,3 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * **Joaquin Concha** - *Trabajo Inicial*
 * **Renato Bassi** - *Documentación*
 
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
