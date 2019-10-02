@@ -47,6 +47,11 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
     Carta new_Carta(char* c, char* n, char* t);  
     void Carta_creado(Carta card);  
     void Carta_print(Carta card) ;  
-    void Carta_borrado(Carta card);_
+    void Carta_borrado(Carta card);  
+    void repartir(Carta* card, int jugador) ;  
+    void MoverCarta(LinkedList* Mazo, int numero_carta,LinkedList* Jugador,int numero_jugador);  
+    void Carta_borrado2(Carta card, int jugador );  
+    void Llist_deletedir2(LinkedList* list, int njugador);    
+    int crearCarpeta(const char *dir, const mode_t mode);_
 * **Renato Bassi** - 201773521-K *SIDABOY-bassisi*
   _Funciones referentes a listas, creacion_
