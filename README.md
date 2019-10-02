@@ -34,6 +34,7 @@ _Se crearan carpetas para cada jugardor en la raiz de SO, además de carpetas pa
 ## Notas 📦
 
 _Se reparten Cartas a cada jugador, y por ultimo a ultima carta_
+_De igual forma, se implemento con listas enlazadas, pensando en un futuro para un mejor manejo a la hora de jugar_
 
 ## Construido con 🛠️
 
