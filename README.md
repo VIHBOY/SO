@@ -41,6 +41,5 @@ _Se reparten Cartas a cada jugador, y por ultimo a ultima carta_
 
 ## Autores ✒️
 
-* **Joaquin Concha** - *Trabajo Inicial*
-* **Renato Bassi** - *Documentación*
-
+* **Joaquin Concha** - 201773569-4
+* **Renato Bassi** - 201773521-K 
