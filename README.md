@@ -21,15 +21,11 @@ _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener 
 _Dí cómo será ese paso_
 
 ```
-Da un ejemplo
+git clone https://github.com/VIHBOY/SO
+cd SO
+cd Ejecucion
+make
 ```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
 ## Ejecutando las pruebas ⚙️
