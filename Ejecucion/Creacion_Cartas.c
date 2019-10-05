@@ -32,31 +32,43 @@ int main ( int argc, char **argv )
 	LinkedList* J3=(LinkedList*)malloc(sizeof(LinkedList));
 	LinkedList* J4=(LinkedList*)malloc(sizeof(LinkedList));
 	LinkedList* Ultima=(LinkedList*)malloc(sizeof(LinkedList));
-	*Mazo=new_LList();
-	*J1=new_LList();
-	*J2=new_LList();
-	*J3=new_LList();
-	*J4=new_LList();
-	*Ultima=new_LList();
+	*Mazo=new_LList(0);
+	*J1=new_LList(1);
+	*J2=new_LList(2);
+	*J3=new_LList(3);
+	*J4=new_LList(4);
+	*Ultima=new_LList(5);
 	 while (fgets(buffer, 100, fp) != NULL){
 		pch = strtok (buffer," ");
 		while (pch != NULL && i < MAXWORD){strncpy(arr[i++], pch, MAXSTRLEN);pch = strtok (NULL, " ");}
 		Carta* Cartita=(Carta*)malloc(sizeof(Carta));
 		*Cartita = new_Carta(strtok(arr[2],"\n"),arr[1],arr[0]);
 		LList_append(Mazo,*Cartita);
-		i=0;free(Cartita);
-		}
+		i=0;free(Cartita);	}
 	Llist_makedir(Mazo);
 	int count;
 	for ( count = 0; count < 7; count++) {
-		MoverCarta(Mazo,rand()%Mazo->size,J1,1);
-		MoverCarta(Mazo,rand()%Mazo->size,J2,2);
-		MoverCarta(Mazo,rand()%Mazo->size,J3,3);
-		MoverCarta(Mazo,rand()%Mazo->size,J4,4);
+		Robar(Mazo,J1);
+    Robar(Mazo,J2);
+    Robar(Mazo,J3);
+    Robar(Mazo,J4);
 	}
-	MoverCarta(Mazo,rand()%Mazo->size,Ultima,5);
+	Robar(Mazo,Ultima);
+  while (J1->size!=0) {
+      int n;
+      int n2;
+      Carta_print(*Cartaactual(Ultima));
+      LList_printAll2(J1);
+      printf("Ingrese carta a jugar: ");
+      scanf("%d",&n );
+      LList_moveTo(J1,n);
+      printf("%d\n",Esjugable(Cartaactual(J1),Cartaactual(Ultima)));
+      if (Esjugable(Cartaactual(J1),Cartaactual(Ultima))==1) {
+        JugarCarta(J1,Ultima);}
+      else
+        printf("No es Jugable\n");
+      }
 	LList_clear(Mazo);
-	LList_clear(J1);
 	LList_clear(J2);
 	LList_clear(J3);
 	LList_clear(J4);

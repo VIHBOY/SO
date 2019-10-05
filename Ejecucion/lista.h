@@ -18,11 +18,12 @@ typedef struct Element{
 typedef struct{
 	int index;
 	int size;
+	int jugador;
 	Element* curr;
 	Element* head;
 	Element* tail;
 }LinkedList;
-
+int Esjugable(Carta* Jugada, Carta* Ultima);
 Carta new_Carta(char* c, char* n, char* t);
 void Carta_creado(Carta card);
 void Carta_print(Carta card) ;
@@ -35,12 +36,15 @@ Carta* Cartaactual(LinkedList* list);
 void Llist_makedir(LinkedList* list);
 void Llist_deletedir(LinkedList* list);
 int LList_append(LinkedList* list,Carta card);
+void LList_printAll2(LinkedList* list);
 int LList_moveTo(LinkedList* list,int pos);
 int LList_remove(LinkedList* list);
 void LList_reLink(LinkedList* dest,LinkedList* from);
 void repartir(Carta* card, int jugador) ;
-void MoverCarta(LinkedList* Mazo, int numero_carta,LinkedList* Jugador,int numero_jugador);
+void Robar(LinkedList* Mazo,LinkedList* Jugador);
 void Carta_borrado2(Carta card, int jugador );
 void Llist_deletedir2(LinkedList* list, int njugador);
 int crearCarpeta(const char *dir, const mode_t mode);
+void JugarCarta(LinkedList* Mano,LinkedList* Ultima);
+void Jugar(Carta* card);
 #endif

@@ -99,7 +99,7 @@ void Carta_creado(Carta card){
 	fclose(fp);
 }
 void Carta_print(Carta card) {
-	printf("%s %s\n",card.numero,card.color);
+	printf("Carta: %s Color: %s\n",card.numero,card.color);
 }
 void Carta_borrado(Carta card){
 	remove(card.nombre);
@@ -133,20 +133,39 @@ void LList_clear(LinkedList* list){
 	list->tail=NULL;
 	list->curr=NULL;
 }
-LinkedList new_LList(){
+LinkedList new_LList(int a){
 	LinkedList list;
 	list.curr=NULL;list.head=NULL;list.tail=NULL;
-	list.size=0;list.index=0;
+	list.size=0;list.index=0;list.jugador=a;
 	return list;
 }
 void LList_printAll(LinkedList* list){
+  printf("%d\n",list->size );
 	Element* p=list->head;
 	while(p!=list->tail){
-		 Carta_print(p->card);
+		 printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);
 		 p=p->next;
 	}
-	if(p==list->curr){Carta_print(p->card);}
-		else {Carta_print(p->card);}
+	if(p==list->curr){printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
+		else {printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
+}
+void LList_printAll2(LinkedList* list){
+	Element* p=list->head;
+  int i=0;
+  for (i = 0; i < list->size; i++) {
+      printf("%d. Color: %s Numero: %s\n",i,p->card.color,p->card.numero);
+      p=p->next;
+  }
+}
+int Esjugable(Carta* Jugada, Carta* Ultima){
+  if (strcmp(Jugada->color,Ultima->color)==0) {
+    return 1;
+  }
+  if (strcmp(Jugada->numero,Ultima->numero)==0) {
+    return 1;
+  }
+  else
+    return 0;
 }
 Carta* Cartaactual(LinkedList* list){
 	return &(list->curr->card);
@@ -231,74 +250,141 @@ void LList_reLink(LinkedList* dest,LinkedList* from){
 	LList_remove(from);
 	LList_append(dest,data);
 }
+void repartir2(Carta* card, int jugador) {
+    char name[100]="";
+    char name2[100]="";
+  	char dir[100]="";
+    char mazo[100]="";
+    chdir("..");
+    chdir("Mazo/");
+    if (jugador==1) {
+      chdir("..");
+   	  chdir("Ultima Jugada/");
+      strcat(name2,getcwd(dir, 100));
+      strcat(name2,"/");
+      strcat(name2,card->nombre);
+      chdir("..");
+      chdir("Jugador 1/");
+      strcpy(mazo,getcwd(dir,100));
+      strcat(name,mazo);
+      strcat(name,"/");
+      strcat(name,card->nombre);
+      rename(name,name2);
+  	}
+    if (jugador==2) {
+      chdir("..");
+   	  chdir("Ultima Jugada/");
+      strcat(name2,getcwd(dir, 100));
+      strcat(name2,"/");
+      strcat(name2,card->nombre);
+      strcat(name,mazo);
+      strcat(name,"/");
+      strcat(name,card->nombre);
+      rename(name,name2);
+  	}
+   if (jugador==3) {
+     chdir("..");
+     chdir("Ultima Jugada/");
+     strcat(name2,getcwd(dir, 100));
+     strcat(name2,"/");
+     strcat(name2,card->nombre);
+     strcat(name,mazo);
+     strcat(name,"/");
+     strcat(name,card->nombre);
+     rename(name,name2);
+   	}
+   if (jugador==4) {
+     chdir("..");
+     chdir("Ultima Jugada/");
+     strcat(name2,getcwd(dir, 100));
+     strcat(name2,"/");
+     strcat(name2,card->nombre);
+     strcat(name,mazo);
+     strcat(name,"/");
+     strcat(name,card->nombre);
+     rename(name,name2);
+   	}
+  	}
 void repartir(Carta* card, int jugador) {
-  char name[100]="";
-  char name2[100]="";
-	char dir[100]="";
-  char mazo[100]="";
-  chdir("..");
-  chdir("Mazo/");
-  strcpy(mazo,getcwd(dir,100));
-  if (jugador==1) {
-	 chdir("..");
-	 chdir("Jugador 1/");
-	 strcat(name2,getcwd(dir, 100));
-	 strcat(name2,"/");
- 	 strcat(name2,card->nombre);
-	 strcat(name,mazo);
-   strcat(name,"/");
-	 strcat(name,card->nombre);
-   rename(name,name2);
-	}
-  if (jugador==2) {
+    char name[100]="";
+    char name2[100]="";
+  	char dir[100]="";
+    char mazo[100]="";
     chdir("..");
-    chdir("Jugador 2/");
-    strcat(name2,getcwd(dir, 100));
-    strcat(name2,"/");
-    strcat(name2,card->nombre);
-    strcat(name,mazo);
-    strcat(name,"/");
-    strcat(name,card->nombre);
-    rename(name,name2);
-	}
- if (jugador==3) {
-    chdir("..");
-    chdir("Jugador 3/");
-    strcat(name2,getcwd(dir, 100));
-    strcat(name2,"/");
-    strcat(name2,card->nombre);
-    strcat(name,mazo);
-    strcat(name,"/");
-    strcat(name,card->nombre);
-    rename(name,name2);
- 	}
- if (jugador==4) {
-    chdir("..");
-    chdir("Jugador 4/");
-    strcat(name2,getcwd(dir, 100));
-    strcat(name2,"/");
-    strcat(name2,card->nombre);
-    strcat(name,mazo);
-    strcat(name,"/");
-    strcat(name,card->nombre);
-    rename(name,name2);
- 	}
- if (jugador==5) {
-	 chdir("..");
-	 chdir("Ultima Jugada/");
-   strcat(name2,getcwd(dir, 100));
-   strcat(name2,"/");
-   strcat(name2,card->nombre);
-   strcat(name,mazo);
-   strcat(name,"/");
-   strcat(name,card->nombre);
-   rename(name,name2);
-   }
-	}
-void MoverCarta(LinkedList* Mazo, int numero_carta,LinkedList* Jugador,int numero_jugador){
-	LList_moveTo(Mazo,numero_carta);
+    chdir("Mazo/");
+    strcpy(mazo,getcwd(dir,100));
+    if (jugador==1) {
+  	 chdir("..");
+  	 chdir("Jugador 1/");
+  	 strcat(name2,getcwd(dir, 100));
+  	 strcat(name2,"/");
+   	 strcat(name2,card->nombre);
+  	 strcat(name,mazo);
+     strcat(name,"/");
+  	 strcat(name,card->nombre);
+     rename(name,name2);
+  	}
+    if (jugador==2) {
+      chdir("..");
+      chdir("Jugador 2/");
+      strcat(name2,getcwd(dir, 100));
+      strcat(name2,"/");
+      strcat(name2,card->nombre);
+      strcat(name,mazo);
+      strcat(name,"/");
+      strcat(name,card->nombre);
+      rename(name,name2);
+  	}
+   if (jugador==3) {
+      chdir("..");
+      chdir("Jugador 3/");
+      strcat(name2,getcwd(dir, 100));
+      strcat(name2,"/");
+      strcat(name2,card->nombre);
+      strcat(name,mazo);
+      strcat(name,"/");
+      strcat(name,card->nombre);
+      rename(name,name2);
+   	}
+   if (jugador==4) {
+      chdir("..");
+      chdir("Jugador 4/");
+      strcat(name2,getcwd(dir, 100));
+      strcat(name2,"/");
+      strcat(name2,card->nombre);
+      strcat(name,mazo);
+      strcat(name,"/");
+      strcat(name,card->nombre);
+      rename(name,name2);
+   	}
+   if (jugador==5) {
+  	 chdir("..");
+  	 chdir("Ultima Jugada/");
+     strcat(name2,getcwd(dir, 100));
+     strcat(name2,"/");
+     strcat(name2,card->nombre);
+     strcat(name,mazo);
+     strcat(name,"/");
+     strcat(name,card->nombre);
+     rename(name,name2);
+     }
+  	}
+void Robar(LinkedList* Mazo,LinkedList* Jugador){
+  int numero_carta=rand()%Mazo->size;
+  int numero_jugador=Jugador->jugador;
+  LList_moveTo(Mazo,numero_carta);
 	repartir(Cartaactual(Mazo),numero_jugador);
 	LList_reLink(Jugador,Mazo);
+    }
+void JugarCarta(LinkedList* Mano,LinkedList* Ultima){
+  Carta_borrado2(*(Cartaactual(Ultima)),5);
+  repartir2(&(Mano->curr->card),1);
+  LList_reLink(Ultima,Mano);
+  free((void*)Ultima->curr->card.nombre);
+  free((void*)Ultima->curr->card.color);
+  free((void*)Ultima->curr->card.tipo);
+  free((void*)Ultima->curr->card.numero);
+  LList_remove(Ultima);
     }
 void Carta_borrado2(Carta card, int jugador){
 		char name2[100]="";
@@ -306,6 +392,14 @@ void Carta_borrado2(Carta card, int jugador){
 	    if (jugador==1) {
 			 chdir("..");
 		 	 chdir("Jugador 1/");
+		 	 strcat(name2,getcwd(dir, 100));
+		 	 strcat(name2,"/");
+		   strcat(name2,card.nombre);
+	  	 remove(name2);
+	  	}
+      if (jugador==5) {
+			 chdir("..");
+		 	 chdir("Ultima Jugada/");
 		 	 strcat(name2,getcwd(dir, 100));
 		 	 strcat(name2,"/");
 		   strcat(name2,card.nombre);
