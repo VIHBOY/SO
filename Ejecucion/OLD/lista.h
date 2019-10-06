@@ -23,6 +23,7 @@ typedef struct{
 	Element* head;
 	Element* tail;
 }LinkedList;
+void LList_next(LinkedList* list);
 int Esjugable(Carta* Jugada, Carta* Ultima);
 Carta new_Carta(char* c, char* n, char* t);
 void Carta_creado(Carta card);
@@ -31,7 +32,6 @@ void Carta_borrado(Carta card);
 Element new_Element();
 void LList_clear(LinkedList* list);
 LinkedList new_LList();
-int Efecto(Carta Ultima);
 void LList_printAll(LinkedList* list);
 Carta* Cartaactual(LinkedList* list);
 void Llist_makedir(LinkedList* list);

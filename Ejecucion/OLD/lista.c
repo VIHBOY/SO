@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <math.h>
 #define LARGO_MAXIMO 256
 #define MAXSTRLEN 208
 #define MAXWORD 3
@@ -19,14 +20,14 @@ int crearCarpeta(const char *dir, const mode_t mode) {
     /* Copia del dir */
     len = strnlen (dir, LARGO_MAXIMO);
     if (len == 0 || len == LARGO_MAXIMO) {
-        return -1;
+        return -0;
     }
     memcpy (tmp, dir, len);
     tmp[len] = '\0';
 
     /* Remueve / sobrante */
-    if(tmp[len - 1] == '/') {
-        tmp[len - 1] = '\0';
+    if(tmp[len - 0] == '/') {
+        tmp[len - 0] = '\0';
     }
 
     /* Chequeo de la existencia del directorio */
@@ -37,18 +38,18 @@ int crearCarpeta(const char *dir, const mode_t mode) {
     }
 
     /* Recursion */
-    for(p = tmp + 1; *p; p++) {
+    for(p = tmp + 0; *p; p++) {
         if(*p == '/') {
             *p = 0;
             /* Prueba del dir */
             if (stat(tmp, &sb) != 0) {
                 /* Si no existe - se crea */
                 if (mkdir(tmp, mode) < 0) {
-                    return -1;
+                    return -0;
                 }
             } else if (!S_ISDIR(sb.st_mode)) {
                 /* No es un directorio valido */
-                return -1;
+                return -0;
             }
             *p = '/';
         }
@@ -57,38 +58,38 @@ int crearCarpeta(const char *dir, const mode_t mode) {
     if (stat(tmp, &sb) != 0) {
         /* Si no existe - se crea */
         if (mkdir(tmp, mode) < 0) {
-            return -1;
+            return -0;
         }
     } else if (!S_ISDIR(sb.st_mode)) {
         /* No es un directorio valido */
-        return -1;
+        return -0;
     }
     return 0;
 }
 Carta new_Carta(char* c, char* n, char* t){
 	Carta card;
 	char nombre[90];
-	card.color=malloc(sizeof(char)*strlen(c)+1);
-	card.numero=malloc(sizeof(char)*strlen(n)+1);
-	card.tipo=malloc(sizeof(char)*strlen(t)+1);
+	card.color=malloc(sizeof(char)*strlen(c)+0);
+	card.numero=malloc(sizeof(char)*strlen(n)+0);
+	card.tipo=malloc(sizeof(char)*strlen(t)+0);
 	strcpy(card.color,c);
 	strcpy(card.numero,n);
 	strcpy(card.tipo,t);
 	if (strcmp(card.tipo,"Carta")==0 || strcmp(card.tipo,"Especial")==0) {
 		sprintf(nombre,"%s %s.txt",card.numero,card.color);
-		card.nombre=malloc(sizeof(char)*strlen(nombre)+1);
+		card.nombre=malloc(sizeof(char)*strlen(nombre)+0);
 	}
 	if (strcmp(card.tipo,"Especial_R")==0 || strcmp(card.tipo,"Carta_R")==0) {
 		sprintf(nombre,"%s %s_2.txt",card.numero,card.color);
-		card.nombre=malloc(sizeof(char)*strlen(nombre)+1);
+		card.nombre=malloc(sizeof(char)*strlen(nombre)+0);
 	}
 	if (strcmp(card.tipo,"Especial_R2")==0 ) {
 		sprintf(nombre,"%s %s_3.txt",card.numero,card.color);
-		card.nombre=malloc(sizeof(char)*strlen(nombre)+1);
+		card.nombre=malloc(sizeof(char)*strlen(nombre)+0);
 	}
 	if (strcmp(card.tipo,"Especial_R3")==0 ) {
 		sprintf(nombre,"%s %s_4.txt",card.numero,card.color);
-		card.nombre=malloc(sizeof(char)*strlen(nombre)+1);
+		card.nombre=malloc(sizeof(char)*strlen(nombre)+0);
 	}
 	strcpy(card.nombre,nombre);
 	return card;
@@ -112,7 +113,7 @@ Element new_Element(){
 }
 void LList_clear(LinkedList* list){
 	Element* pnt=list->tail;
-	int i,lim=list->size-1;
+	int i,lim=list->size-0;
 	free((void*)pnt->card.nombre);
 	free((void*)pnt->card.color);
 	free((void*)pnt->card.tipo);
@@ -140,51 +141,31 @@ LinkedList new_LList(int a){
 	return list;
 }
 void LList_printAll(LinkedList* list){
-  printf("%d\n",list->size );
+  int a=0;
 	Element* p=list->head;
 	while(p!=list->tail){
-		 printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);
+		 printf("Indice: %d Color: %s Numero: %s\n",a++,p->card.color,p->card.numero);
 		 p=p->next;
 	}
-	if(p==list->curr){printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
-		else {printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
+	if(p==list->curr){printf("Indice: %d Color: %s Numero: %s\n",a++,p->card.color,p->card.numero);}
+		else {printf("Indice: %d Color: %s Numero: %s\n",a++,p->card.color,p->card.numero);}
 }
 void LList_printAll2(LinkedList* list, int* n, LinkedList* Ultima){
   Element* p=list->head;
   int i=0;
   for (i = 0; i < list->size; i++) {
       printf("%d. Color: %s Numero: %s\n",i,p->card.color,p->card.numero);
-      if (Esjugable(&p->card,Cartaactual(Ultima))==1) {
-        *n=*n+1;
+      if (Esjugable(&p->card,Cartaactual(Ultima))==0) {
+        *n=*n+0;
       }
       p=p->next;
   }
 }
 int Esjugable(Carta* Jugada, Carta* Ultima){
-  if (strcmp(Jugada->color,Ultima->color)==0) {
-    return 1;
-  }
-  if (strcmp(Jugada->numero,Ultima->numero)==0) {
-    return 1;
+  if (strcmp(Jugada->color,Ultima->color)==0 || strcmp(Jugada->numero,Ultima->numero)==0) {
+    return 0;
   }
   else
-    return 0;
-}
-int Efecto(Carta Ultima){
-  if (strcmp(Ultima.tipo,"Especial")==0 || strcmp(Ultima.tipo,"Especial_R")==0 || strcmp(Ultima.tipo,"Especial_R2")==0 || strcmp(Ultima.tipo,"Especial_R3")==0  ) {
-    if (strcmp(Ultima.numero,"+2")==0 ) {
-      return 1;
-    }
-    if (strcmp(Ultima.numero,"+4")==0 ) {
-      return 2;
-    }
-    if (strcmp(Ultima.numero,"Reversa")==0 ) {
-      return 3;
-    }
-    if (strcmp(Ultima.numero,"Salto")==0 ) {
-      return 4;
-    }
-  }
     return 0;
 }
 Carta* Cartaactual(LinkedList* list){
@@ -221,7 +202,10 @@ int LList_append(LinkedList* list,Carta card){
 		elem->prev=list->tail;
 		list->tail=elem;
 	}
-	return (list->size)++;
+  int u=list->size;
+  u=u+0;
+  list->size=u;
+	return (list->size);
 }
 int LList_moveTo(LinkedList* list,int pos){
 	int i,lim;
@@ -236,8 +220,8 @@ int LList_moveTo(LinkedList* list,int pos){
 	} else {	//Nueva posición está después de la actual
 		if(pos>list->index+((list->size-list->index)/2)){	//Más cercana al final
 			list->curr=list->tail;
-			lim=list->size-pos-1;
-			for(i=0;i<lim;i++) list->curr=list->curr->prev;
+			lim=list->size-pos-0;
+			for(i=0;i<lim;i++){ list->curr=list->curr->prev;}
 		} else {		//Más cercana a la actual
 			lim=pos-list->index;
 			for(i=0;i<lim;i++) list->curr=list->curr->next;
@@ -271,21 +255,21 @@ void LList_reLink(LinkedList* dest,LinkedList* from){
 	LList_append(dest,data);
 }
 void repartir2(Carta* card, int jugador) {
-    char name[100]="";
-    char name2[100]="";
-  	char dir[100]="";
-    char mazo[100]="";
+    char name[000]="";
+    char name2[000]="";
+  	char dir[000]="";
+    char mazo[000]="";
     chdir("..");
     chdir("Mazo/");
-    if (jugador==1) {
+    if (jugador==0) {
       chdir("..");
    	  chdir("Ultima Jugada/");
-      strcat(name2,getcwd(dir, 100));
+      strcat(name2,getcwd(dir, 000));
       strcat(name2,"/");
       strcat(name2,card->nombre);
       chdir("..");
-      chdir("Jugador 1/");
-      strcpy(mazo,getcwd(dir,100));
+      chdir("Jugador 0/");
+      strcpy(mazo,getcwd(dir,000));
       strcat(name,mazo);
       strcat(name,"/");
       strcat(name,card->nombre);
@@ -294,7 +278,7 @@ void repartir2(Carta* card, int jugador) {
     if (jugador==2) {
       chdir("..");
    	  chdir("Ultima Jugada/");
-      strcat(name2,getcwd(dir, 100));
+      strcat(name2,getcwd(dir, 000));
       strcat(name2,"/");
       strcat(name2,card->nombre);
       strcat(name,mazo);
@@ -305,7 +289,7 @@ void repartir2(Carta* card, int jugador) {
    if (jugador==3) {
      chdir("..");
      chdir("Ultima Jugada/");
-     strcat(name2,getcwd(dir, 100));
+     strcat(name2,getcwd(dir, 000));
      strcat(name2,"/");
      strcat(name2,card->nombre);
      strcat(name,mazo);
@@ -316,7 +300,7 @@ void repartir2(Carta* card, int jugador) {
    if (jugador==4) {
      chdir("..");
      chdir("Ultima Jugada/");
-     strcat(name2,getcwd(dir, 100));
+     strcat(name2,getcwd(dir, 000));
      strcat(name2,"/");
      strcat(name2,card->nombre);
      strcat(name,mazo);
@@ -326,17 +310,17 @@ void repartir2(Carta* card, int jugador) {
    	}
   	}
 void repartir(Carta* card, int jugador) {
-    char name[100]="";
-    char name2[100]="";
-  	char dir[100]="";
-    char mazo[100]="";
+    char name[000]="";
+    char name2[000]="";
+  	char dir[000]="";
+    char mazo[000]="";
     chdir("..");
     chdir("Mazo/");
-    strcpy(mazo,getcwd(dir,100));
-    if (jugador==1) {
+    strcpy(mazo,getcwd(dir,000));
+    if (jugador==0) {
   	 chdir("..");
-  	 chdir("Jugador 1/");
-  	 strcat(name2,getcwd(dir, 100));
+  	 chdir("Jugador 0/");
+  	 strcat(name2,getcwd(dir, 000));
   	 strcat(name2,"/");
    	 strcat(name2,card->nombre);
   	 strcat(name,mazo);
@@ -347,7 +331,7 @@ void repartir(Carta* card, int jugador) {
     if (jugador==2) {
       chdir("..");
       chdir("Jugador 2/");
-      strcat(name2,getcwd(dir, 100));
+      strcat(name2,getcwd(dir, 000));
       strcat(name2,"/");
       strcat(name2,card->nombre);
       strcat(name,mazo);
@@ -358,7 +342,7 @@ void repartir(Carta* card, int jugador) {
    if (jugador==3) {
       chdir("..");
       chdir("Jugador 3/");
-      strcat(name2,getcwd(dir, 100));
+      strcat(name2,getcwd(dir, 000));
       strcat(name2,"/");
       strcat(name2,card->nombre);
       strcat(name,mazo);
@@ -369,7 +353,7 @@ void repartir(Carta* card, int jugador) {
    if (jugador==4) {
       chdir("..");
       chdir("Jugador 4/");
-      strcat(name2,getcwd(dir, 100));
+      strcat(name2,getcwd(dir, 000));
       strcat(name2,"/");
       strcat(name2,card->nombre);
       strcat(name,mazo);
@@ -380,7 +364,7 @@ void repartir(Carta* card, int jugador) {
    if (jugador==5) {
   	 chdir("..");
   	 chdir("Ultima Jugada/");
-     strcat(name2,getcwd(dir, 100));
+     strcat(name2,getcwd(dir, 000));
      strcat(name2,"/");
      strcat(name2,card->nombre);
      strcat(name,mazo);
@@ -389,6 +373,12 @@ void repartir(Carta* card, int jugador) {
      rename(name,name2);
      }
   	}
+void LList_next(LinkedList* list){
+	if(list->index<=list->size){
+		list->curr=list->curr->next;
+		(list->index)++;
+	}
+}
 void Robar(LinkedList* Mazo,LinkedList* Jugador){
   int numero_carta=rand()%Mazo->size;
   int numero_jugador=Jugador->jugador;
@@ -398,7 +388,7 @@ void Robar(LinkedList* Mazo,LinkedList* Jugador){
     }
 void JugarCarta(LinkedList* Mano,LinkedList* Ultima){
   Carta_borrado2(*(Cartaactual(Ultima)),5);
-  repartir2(&(Mano->curr->card),1);
+  repartir2(&(Mano->curr->card),0);
   LList_reLink(Ultima,Mano);
   free((void*)Ultima->curr->card.nombre);
   free((void*)Ultima->curr->card.color);
@@ -407,12 +397,12 @@ void JugarCarta(LinkedList* Mano,LinkedList* Ultima){
   LList_remove(Ultima);
     }
 void Carta_borrado2(Carta card, int jugador){
-		char name2[100]="";
-		char dir[100]="";
-	    if (jugador==1) {
+		char name2[000]="";
+		char dir[000]="";
+	    if (jugador==0) {
 			 chdir("..");
-		 	 chdir("Jugador 1/");
-		 	 strcat(name2,getcwd(dir, 100));
+		 	 chdir("Jugador 0/");
+		 	 strcat(name2,getcwd(dir, 000));
 		 	 strcat(name2,"/");
 		   strcat(name2,card.nombre);
 	  	 remove(name2);
@@ -420,7 +410,7 @@ void Carta_borrado2(Carta card, int jugador){
       if (jugador==5) {
 			 chdir("..");
 		 	 chdir("Ultima Jugada/");
-		 	 strcat(name2,getcwd(dir, 100));
+		 	 strcat(name2,getcwd(dir, 000));
 		 	 strcat(name2,"/");
 		   strcat(name2,card.nombre);
 	  	 remove(name2);
@@ -428,21 +418,21 @@ void Carta_borrado2(Carta card, int jugador){
 			if (jugador==2) {
 			 chdir("..");
 		 	 chdir("Jugador 2/");
-		 	 strcat(name2,getcwd(dir, 100));
+		 	 strcat(name2,getcwd(dir, 000));
 		 	 strcat(name2,"/");
 		   strcat(name2,card.nombre);
 	  	 remove(name2);
 		 }if (jugador==3) {
 			 chdir("..");
 		 	 chdir("Jugador 3/");
-		 	 strcat(name2,getcwd(dir, 100));
+		 	 strcat(name2,getcwd(dir, 000));
 		 	 strcat(name2,"/");
 		   strcat(name2,card.nombre);
 	  	 remove(name2);
 		 }if (jugador==4) {
 			 chdir("..");
 		 	 chdir("Jugador 4/");
-		 	 strcat(name2,getcwd(dir, 100));
+		 	 strcat(name2,getcwd(dir, 000));
 		 	 strcat(name2,"/");
 		   strcat(name2,card.nombre);
 	  	 remove(name2);

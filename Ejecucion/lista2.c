@@ -149,14 +149,11 @@ void LList_printAll(LinkedList* list){
 	if(p==list->curr){printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
 		else {printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
 }
-void LList_printAll2(LinkedList* list, int* n, LinkedList* Ultima){
-  Element* p=list->head;
+void LList_printAll2(LinkedList* list){
+	Element* p=list->head;
   int i=0;
   for (i = 0; i < list->size; i++) {
       printf("%d. Color: %s Numero: %s\n",i,p->card.color,p->card.numero);
-      if (Esjugable(&p->card,Cartaactual(Ultima))==1) {
-        *n=*n+1;
-      }
       p=p->next;
   }
 }
@@ -168,23 +165,6 @@ int Esjugable(Carta* Jugada, Carta* Ultima){
     return 1;
   }
   else
-    return 0;
-}
-int Efecto(Carta Ultima){
-  if (strcmp(Ultima.tipo,"Especial")==0 || strcmp(Ultima.tipo,"Especial_R")==0 || strcmp(Ultima.tipo,"Especial_R2")==0 || strcmp(Ultima.tipo,"Especial_R3")==0  ) {
-    if (strcmp(Ultima.numero,"+2")==0 ) {
-      return 1;
-    }
-    if (strcmp(Ultima.numero,"+4")==0 ) {
-      return 2;
-    }
-    if (strcmp(Ultima.numero,"Reversa")==0 ) {
-      return 3;
-    }
-    if (strcmp(Ultima.numero,"Salto")==0 ) {
-      return 4;
-    }
-  }
     return 0;
 }
 Carta* Cartaactual(LinkedList* list){
@@ -236,7 +216,7 @@ int LList_moveTo(LinkedList* list,int pos){
 	} else {	//Nueva posición está después de la actual
 		if(pos>list->index+((list->size-list->index)/2)){	//Más cercana al final
 			list->curr=list->tail;
-			lim=list->size-pos-1;
+			lim=list->size-pos;
 			for(i=0;i<lim;i++) list->curr=list->curr->prev;
 		} else {		//Más cercana a la actual
 			lim=pos-list->index;
