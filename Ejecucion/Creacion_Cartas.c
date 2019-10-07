@@ -59,8 +59,9 @@ int main ( int argc, char **argv )
     int n2=0;
     printf("----------------------\n");
     Carta_print(*Cartaactual(Ultima));
-    if (Efecto(*Cartaactual(Ultima))==4) {
-      printf("Aplicacion de salto\n", );
+    if (J1->size==2){
+      if (Efecto(*Cartaactual(Ultima))==4) {
+      printf("Aplicacion de salto\n" );
       printf("Fin del turno\n");
       break;
     }
@@ -98,6 +99,7 @@ int main ( int argc, char **argv )
       if (Esjugable(Cartaactual(J1),Cartaactual(Ultima))==1) {
         printf("Es jugable\n");
         JugarCarta(J1,Ultima);
+        printf("UNO!!\n");
       }
       else{
         printf("No Es jugable\n");
@@ -120,6 +122,71 @@ int main ( int argc, char **argv )
         break;
       }
 
+    }
+    }
+    else{
+      if (Efecto(*Cartaactual(Ultima))==4) {
+        printf("Aplicacion de salto\n" );
+        printf("Fin del turno\n");
+        break;
+      }
+      if (Efecto(*Cartaactual(Ultima))==3) {
+        printf("Reversa\n" );
+        printf("Fin del turno\n");
+        break;
+      }
+      if (Efecto(*Cartaactual(Ultima))==2) {
+        printf("Robas 4 Cartas\n");
+        Robar(Mazo,J1);
+        Robar(Mazo,J1);
+        Robar(Mazo,J1);
+        Robar(Mazo,J1);
+        printf("Fin del turno\n");
+        break;
+      }
+      if (Efecto(*Cartaactual(Ultima))==1) {
+        printf("Robas 2 Cartas\n");
+        Robar(Mazo,J1);
+        Robar(Mazo,J1);
+        printf("Fin del turno\n");
+        break;
+      }
+      printf("%d\n",Efecto(*Cartaactual(Ultima)));
+      printf("----------------------\n");
+      LList_printAll2(J1,&n2,Ultima);
+      printf("Cartas posibles de jugar: %d\n",n2 );
+      Carta_print(*Cartaactual(J1));
+      if (n2!=0) {
+        printf("Ingrese carta a jugar: ");
+        scanf("%d",&n );
+        LList_moveTo(J1,n);
+        Carta_print(*Cartaactual(J1));
+        if (Esjugable(Cartaactual(J1),Cartaactual(Ultima))==1) {
+          printf("Es jugable\n");
+          JugarCarta(J1,Ultima);
+        }
+        else{
+          printf("No Es jugable\n");
+        }
+      }
+      else{
+        printf("Robas Carta\n");
+        Robar(Mazo,J1);
+        printf("Tamaño %d\n",J1->size );
+        J1->curr=J1->tail;
+        Carta_print(*Cartaactual(J1));
+        if (Esjugable(Cartaactual(J1),Cartaactual(Ultima))==1) {
+          printf("Es jugable\n");
+          JugarCarta(J1,Ultima);
+          J1->curr=J1->head;
+        }
+        else{
+          printf("Fin del turno\n");
+          J1->curr=J1->head;
+          break;
+        }
+
+      }
     }
     }
   if (J1->size!=0) {
