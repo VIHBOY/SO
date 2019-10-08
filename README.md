@@ -30,6 +30,7 @@ make
 ./Creacion_Cartas
 ```
 _Se crearan carpetas para cada jugardor en la raiz de SO, además de carpetas para mazo y ultima carta_
+
 _Con el jugador 1, se pondra a prueba la implementación de reglas y condiciones de termino_
 
 ## Notas 📦
