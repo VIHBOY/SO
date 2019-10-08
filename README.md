@@ -37,9 +37,9 @@ _Con el jugador 1, se pondra a prueba la implementación de reglas y condiciones
 
 _Se reparten Cartas a cada jugador, y por ultimo a ultima carta._
 
-_De igual forma, se implemento con listas enlazadas, pensando en un futuro para un mejor manejo a la hora de jugar_
+_De igual forma, se implemento con listas enlazadas, pensando en un futuro para un mejor manejo a la hora de jugar._
 
--La carpeta OLD tiene respaldado el trabajo anterior.
+-La carpeta OLD tiene respaldado el trabajo anterior.-
 
 ## Construido con 🛠️
 
