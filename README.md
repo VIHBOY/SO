@@ -1,6 +1,6 @@
 # Tarea 1 SO UNO
 
-_Primer Entregable de la tarea de Sistema Operativo_
+_Segundo Entregable de la tarea de Sistema Operativo_
 
 ## Comenzando 🚀
 
@@ -30,6 +30,7 @@ make
 ./Creacion_Cartas
 ```
 _Se crearan carpetas para cada jugardor en la raiz de SO, además de carpetas para mazo y ultima carta_
+_Con el jugador 1, se pondra a prueba la implementación de reglas y condiciones de termino_
 
 ## Notas 📦
 
@@ -43,7 +44,7 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
 ## Autores ✒️
 
 * **Joaquin Concha** - 201773569-4 *VIHBOY*
-   -_Funciones referentes a Cartas, main  
+   -_Funciones referentes a Cartas, main_
         -Carta new_Carta(char* c, char* n, char* t);    
         -void Carta_creado(Carta card);   
         -Carta* Cartaactual(LinkedList* list);    
@@ -53,7 +54,10 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
         -void MoverCarta(LinkedList* Mazo, int numero_carta,LinkedList* Jugador,int numero_jugador);  
         -void Carta_borrado2(Carta card, int jugador );  
         -void Llist_deletedir2(LinkedList* list, int njugador);    
-        -int crearCarpeta(const char *dir, const mode_t mode);_
+        -int crearCarpeta(const char *dir, const mode_t mode);
+        -int Esjugable(Carta* Jugada, Carta* Ultima);
+        -int Efecto(Carta Ultima);
+        -void Robar(LinkedList* Mazo,LinkedList* Jugador);
 * **Renato Bassi** - 201773521-K *SIDABOY-bassisi*
   -_Funciones referentes a listas, creacion_  
         -Element new_Element();  
@@ -66,3 +70,5 @@ _De igual forma, se implemento con listas enlazadas, pensando en un futuro para 
         -int LList_moveTo(LinkedList* list,int pos);  
         -int LList_remove(LinkedList* list);  
         -void LList_reLink(LinkedList* dest,LinkedList* from);
+        -void JugarCarta(LinkedList* Mano,LinkedList* Ultima);
+        -void Jugar(Carta* card);
