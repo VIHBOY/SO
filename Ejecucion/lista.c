@@ -140,7 +140,6 @@ LinkedList new_LList(int a){
 	return list;
 }
 void LList_printAll(LinkedList* list){
-  printf("%d\n",list->size );
 	Element* p=list->head;
 	while(p!=list->tail){
 		 printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);
@@ -149,6 +148,17 @@ void LList_printAll(LinkedList* list){
 	if(p==list->curr){printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
 		else {printf("Indice: %d Color: %s Numero: %s\n",list->index,p->card.color,p->card.numero);}
 }
+void LList_Actualizacion(LinkedList* list, char* c, char* n, char* t){
+  DIR *d;
+  struct dirent *dir;
+  d = opendir(".");
+  if (d) {
+  while ((dir = readdir(d)) != NULL) {
+    printf("%s\n", dir->d_name);
+  }
+  closedir(d);
+  }
+  }
 void LList_printAll2(LinkedList* list, int* n, LinkedList* Ultima){
   Element* p=list->head;
   int i=0;
@@ -297,6 +307,9 @@ void repartir2(Carta* card, int jugador) {
       strcat(name2,getcwd(dir, 100));
       strcat(name2,"/");
       strcat(name2,card->nombre);
+      chdir("..");
+      chdir("Jugador 2/");
+      strcpy(mazo,getcwd(dir,100));
       strcat(name,mazo);
       strcat(name,"/");
       strcat(name,card->nombre);
@@ -308,6 +321,9 @@ void repartir2(Carta* card, int jugador) {
      strcat(name2,getcwd(dir, 100));
      strcat(name2,"/");
      strcat(name2,card->nombre);
+     chdir("..");
+     chdir("Jugador 3/");
+     strcpy(mazo,getcwd(dir,100));
      strcat(name,mazo);
      strcat(name,"/");
      strcat(name,card->nombre);
@@ -319,6 +335,9 @@ void repartir2(Carta* card, int jugador) {
      strcat(name2,getcwd(dir, 100));
      strcat(name2,"/");
      strcat(name2,card->nombre);
+     chdir("..");
+     chdir("Jugador 4/");
+     strcpy(mazo,getcwd(dir,100));
      strcat(name,mazo);
      strcat(name,"/");
      strcat(name,card->nombre);
@@ -390,7 +409,19 @@ void repartir(Carta* card, int jugador) {
      }
   	}
 void Robar(LinkedList* Mazo,LinkedList* Jugador){
+  time_t t;
+	srand((unsigned) time(&t));
   int numero_carta=rand()%Mazo->size;
+  int numero_jugador=Jugador->jugador;
+  LList_moveTo(Mazo,numero_carta);
+	repartir(Cartaactual(Mazo),numero_jugador);
+	LList_reLink(Jugador,Mazo);
+    }
+void Robar2(LinkedList* Mazo,LinkedList* Jugador,int* num){
+  time_t t;
+	srand((unsigned) time(&t));
+  int numero_carta=rand()%Mazo->size;
+  *num=numero_carta;
   int numero_jugador=Jugador->jugador;
   LList_moveTo(Mazo,numero_carta);
 	repartir(Cartaactual(Mazo),numero_jugador);
@@ -398,7 +429,7 @@ void Robar(LinkedList* Mazo,LinkedList* Jugador){
     }
 void JugarCarta(LinkedList* Mano,LinkedList* Ultima){
   Carta_borrado2(*(Cartaactual(Ultima)),5);
-  repartir2(&(Mano->curr->card),1);
+  repartir2(&(Mano->curr->card),Mano->jugador);
   LList_reLink(Ultima,Mano);
   free((void*)Ultima->curr->card.nombre);
   free((void*)Ultima->curr->card.color);
@@ -458,3 +489,115 @@ void Llist_deletedir2(LinkedList* list, int njugador){
 		if(p==list->curr){  Carta_borrado2(p->card,njugador);}
 			else {  Carta_borrado2(p->card,njugador);}
 	}
+void turno2(LinkedList* Mazo,LinkedList* Mano, LinkedList* Ultima, char* turno, int pipe[2]){
+  char mensaje[30]="";
+  char k[20]="";
+  int i2=0;
+  char toque[10]="";
+  char toque2[10]="";
+  switch (Mano->jugador) {
+    case 1:
+      strcpy(toque,"M1");
+      strcpy(toque2,"M2");
+      break;
+    case 2:
+      strcpy(toque,"M2");
+      strcpy(toque2,"M3");
+      break;
+    case 3:
+      strcpy(toque,"M3");
+      strcpy(toque2,"M4");
+      break;
+    case 4:
+      strcpy(toque,"M4");
+      strcpy(toque2,"M1");
+      break;
+  }
+  if (strcmp(turno,toque)==0) {
+    printf("Mi turno %d\n",Mano->jugador);
+      int n;
+      int num;
+      int n2=0;
+      printf("----------------------\n");
+      Carta_print(*Cartaactual(Ultima));
+      printf("----------------------\n");
+      LList_printAll2(Mano,&n2,Ultima);
+      Carta_print(*Cartaactual(Mano));
+      if (n2!=0) {
+        printf("Ingrese carta a jugar: ");
+        scanf("%d",&n );
+        LList_moveTo(Mano,n);
+        if (Esjugable(Cartaactual(Mano),Cartaactual(Ultima))==1) {
+          printf("Es jugable\n");
+          JugarCarta(Mano,Ultima);
+          /*TURNO */
+          strcat(mensaje,toque2);
+          strcat(mensaje," -1");
+          strcat(mensaje," -1");
+          strcat(mensaje," -1 ");
+          strcat(mensaje, Ultima->curr->card.tipo);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.color);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.numero);
+          close(pipe[0]);
+          write(pipe[1], mensaje, (strlen(mensaje)+1));
+          strcpy(turno,toque2);
+          /*TURNO */
+        }
+        else{
+          printf("No Es jugable\n");
+        }
+      }
+      else{
+        printf("Robas Carta\n");
+        Robar2(Mazo,Mano,&num);
+        Mano->curr=Mano->tail;
+        if (Esjugable(Cartaactual(Mano),Cartaactual(Ultima))==1) {
+          printf("Es jugable\n");
+          JugarCarta(Mano,Ultima);
+          Mano->curr=Mano->head;
+          /*TURNO */
+          strcat(mensaje,toque2);
+          strcat(k,Mano->curr->card.tipo);
+          strcat(k," ");
+          strcat(k,Mano->curr->card.color);
+          strcat(k," ");
+          strcat(k,Mano->curr->card.numero);
+          strcat(mensaje," ");
+          strcat(mensaje,k);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.tipo);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.color);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.numero);
+          close(pipe[0]);
+          write(pipe[1], mensaje, (strlen(mensaje)+1));
+          strcpy(turno,toque2);
+        }
+        else{
+          printf("Fin del turno\n");
+          Mano->curr=Mano->head;
+          strcat(mensaje,toque2);
+          strcat(k,Mano->curr->card.tipo);
+          strcat(k," ");
+          strcat(k,Mano->curr->card.color);
+          strcat(k," ");
+          strcat(k,Mano->curr->card.numero);
+          strcat(mensaje," ");
+          strcat(mensaje,k);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.tipo);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.color);
+          strcat(mensaje," ");
+          strcat(mensaje, Ultima->curr->card.numero);
+          close(pipe[0]);
+          write(pipe[1], mensaje, (strlen(mensaje)+1));
+          strcpy(turno,toque2);
+        }
+      }
+  }
+
+}

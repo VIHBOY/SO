@@ -23,6 +23,9 @@ typedef struct{
 	Element* head;
 	Element* tail;
 }LinkedList;
+void LList_Actualizacion(LinkedList* list, char* c, char* n, char* t);
+void turno2(LinkedList* Mazo,LinkedList* Mano, LinkedList* Ultima, char* turno, int pipe[2]);
+void Robar2(LinkedList* Mazo,LinkedList* Jugador,int* num);
 int Esjugable(Carta* Jugada, Carta* Ultima);
 Carta new_Carta(char* c, char* n, char* t);
 void Carta_creado(Carta card);

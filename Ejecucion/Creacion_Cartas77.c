@@ -108,9 +108,9 @@ int main ( int argc, char **argv )
   }*/
   fclose(fp);
   int count;
-  int pid, pid1, pid2,fd12[2],fd23[2],fd34[2],fd41[2],fd13[2],fd24[2];
+  int pid, pid1, pid2,fd12[2],fd23[2],fd34[2],fd41[2],fd122[2],fd232[2],fd342[2],fd412[2];
   char    readbuffer[80];
-  pipe(fd12);pipe(fd23);pipe(fd34);pipe(fd41),pipe(fd13);pipe(fd24),pipe(fd13),pipe(fd24);
+  pipe(fd12);pipe(fd23);pipe(fd34);pipe(fd41),pipe(fd13);pipe(fd24);
   char turno[3] ="M1";
   char *arr2[8];
   char* Juego_terminado="1";
@@ -122,11 +122,12 @@ int main ( int argc, char **argv )
       for ( count = 0; count < 2; count++) {
         Robar(Mazo,J4);}
         while (strcmp(Juego_terminado,"1")==0 && J4->size>0) {
+          char mensaje[20]="";
+          char k[3]="";
           int i2=0;
+          /*TURNO */
           close(fd23[1]);
           read(fd23[0], readbuffer, sizeof(readbuffer));
-          printf("%s\n",readbuffer );
-
           char *p=strtok (readbuffer, " ");
           while (p != NULL){
             arr2[i2++] = p;
@@ -134,6 +135,7 @@ int main ( int argc, char **argv )
         }
         strcpy(turno,arr2[0]);
         if (strcmp(arr2[1],"-1")!=0) {
+          printf("ddd\n" );
           LList_Actualizacion(Mazo,arr2[1],arr2[2],arr2[3]);
         };
         if (strcmp(arr2[4],"-1")!=0 && strcmp(arr2[5],"-1")!=0 && strcmp(arr2[6],"-1")!=0) {
@@ -159,19 +161,20 @@ int main ( int argc, char **argv )
           for ( count = 0; count < 2; count++) {
             Robar(Mazo,J2);}
             while (strcmp(Juego_terminado,"1")==0 && J2->size>0) {
+              char mensaje[30]="";
+              char k[3]="";
               int i2=0;
               /*TURNO */
               close(fd12[1]);
               read(fd12[0], readbuffer, sizeof(readbuffer));
-              printf("%s\n",readbuffer );
-
               char *p=strtok (readbuffer, " ");
               while (p != NULL){
                 arr2[i2++] = p;
                 p = strtok (NULL," ");
             }
             strcpy(turno,arr2[0]);
-            if (strcmp(arr2[1],"-1")!=0) {LList_Actualizacion(Mazo,arr2[1],arr2[2],arr2[3]);
+            if (strcmp(arr2[1],"-1")!=0) {
++              LList_Actualizacion(Mazo,arr2[1],arr2[2],arr2[3]);
             };
             if (strcmp(arr2[4],"-1")!=0 && strcmp(arr2[5],"-1")!=0 && strcmp(arr2[6],"-1")!=0) {
               Carta* Cartita=(Carta*)malloc(sizeof(Carta));
@@ -192,15 +195,17 @@ int main ( int argc, char **argv )
               LinkedList* J1=(LinkedList*)malloc(sizeof(LinkedList));
               *J1=new_LList(1);
               int f=0;
+              int i2=0;
               for ( count = 0; count < 2; count++) {
              		Robar(Mazo,J1);}
                 while (strcmp(Juego_terminado,"1")==0 && J1->size>0) {
+                  char mensaje[30]="";
+                  char k[3]="";
                   int i2=0;
                   /*TURNO */
                   if (f!=0) {
                     close(fd41[1]);
                     read(fd41[0], readbuffer, sizeof(readbuffer));
-                    printf("%s\n",readbuffer );
                     char *p=strtok (readbuffer, " ");
                     while (p != NULL){
                       arr2[i2++] = p;
@@ -220,8 +225,6 @@ int main ( int argc, char **argv )
                   }
                   f++;
                   turno2(Mazo,J1,Ultima,turno,fd12);
-
-
                 }
             LList_clear(J1);
             free(J1);
@@ -238,8 +241,6 @@ int main ( int argc, char **argv )
                   int i2=0;
                   close(fd34[1]);
                   read(fd34[0], readbuffer, sizeof(readbuffer));
-                  printf("%s\n",readbuffer );
-
                   char *p=strtok (readbuffer, " ");
                   while (p != NULL){
                     arr2[i2++] = p;
@@ -247,6 +248,7 @@ int main ( int argc, char **argv )
                 }
                 strcpy(turno,arr2[0]);
                 if (strcmp(arr2[1],"-1")!=0) {
+                  printf("ddd\n" );
                   LList_Actualizacion(Mazo,arr2[1],arr2[2],arr2[3]);
                 }
                 if (strcmp(arr2[4],"-1")!=0 && strcmp(arr2[5],"-1")!=0 && strcmp(arr2[6],"-1")!=0) {

@@ -8,9 +8,6 @@ Carta 6 Rojo
 Carta 7 Rojo
 Carta 9 Rojo
 Carta 8 Rojo
-Especial +2 Rojo
-Especial Reversa Rojo
-Especial Salto Rojo
 Carta 0 Azul
 Carta 1 Azul
 Carta 2 Azul
@@ -21,9 +18,6 @@ Carta 6 Azul
 Carta 7 Azul
 Carta 8 Azul
 Carta 9 Azul
-Especial +2 Azul
-Especial Reversa Azul
-Especial Salto Azul
 Carta 0 Verde
 Carta 1 Verde
 Carta 2 Verde
@@ -34,9 +28,6 @@ Carta 6 Verde
 Carta 7 Verde
 Carta 8 Verde
 Carta 9 Verde
-Especial +2 Verde
-Especial Reversa Verde
-Especial Salto Verde
 Carta 0 Amarillo
 Carta 1 Amarillo
 Carta 2 Amarillo
@@ -47,9 +38,6 @@ Carta 6 Amarillo
 Carta 7 Amarillo
 Carta 8 Amarillo
 Carta 9 Amarillo
-Especial +2 Amarillo
-Especial Reversa Amarillo
-Especial Salto Amarillo
 Carta_R 0 Rojo
 Carta_R 2 Rojo
 Carta_R 1 Rojo
@@ -60,9 +48,6 @@ Carta_R 6 Rojo
 Carta_R 7 Rojo
 Carta_R 9 Rojo
 Carta_R 8 Rojo
-Especial_R +2 Rojo
-Especial_R Reversa Rojo
-Especial_R Salto Rojo
 Carta_R 0 Azul
 Carta_R 1 Azul
 Carta_R 2 Azul
@@ -73,9 +58,6 @@ Carta_R 6 Azul
 Carta_R 7 Azul
 Carta_R 8 Azul
 Carta_R 9 Azul
-Especial_R +2 Azul
-Especial_R Reversa Azul
-Especial_R Salto Azul
 Carta_R 0 Verde
 Carta_R 1 Verde
 Carta_R 2 Verde
@@ -86,9 +68,6 @@ Carta_R 6 Verde
 Carta_R 7 Verde
 Carta_R 8 Verde
 Carta_R 9 Verde
-Especial_R +2 Verde
-Especial_R Reversa Verde
-Especial_R Salto Verde
 Carta_R 0 Amarillo
 Carta_R 1 Amarillo
 Carta_R 2 Amarillo
@@ -99,14 +78,3 @@ Carta_R 6 Amarillo
 Carta_R 7 Amarillo
 Carta_R 8 Amarillo
 Carta_R 9 Amarillo
-Especial_R +2 Amarillo
-Especial_R Reversa Amarillo
-Especial_R Salto Amarillo
-Especial Colores Negro
-Especial_R Colores Negro
-Especial_R2 Colores Negro
-Especial_R3 Colores Negro
-Especial +4 Negro
-Especial_R +4 Negro
-Especial_R2 +4 Negro
-Especial_R3 +4 Negro
