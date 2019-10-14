@@ -83,8 +83,82 @@ int main ( int argc, char **argv )
         printf("Es jugable\n");
         JugarCarta(J4,Ultima);
       }
-      else{
-        printf("No Es jugable\n");
+      else {
+        /* turno 1*/
+          pid2 = fork();
+          if (pid2 == 0) {
+              LinkedList* J1=(LinkedList*)malloc(sizeof(LinkedList));
+              *J1=new_LList(1);
+              int f=0;
+              for ( count = 0; count < 2; count++) {
+             		Robar(Mazo,J1);}
+                while (strcmp(Juego_terminado,"1")==0 && J1->size>0) {
+                  int i2=0;
+                  /*TURNO */
+                  if (f!=0) {
+                    close(fd41[1]);
+                    read(fd41[0], readbuffer, sizeof(readbuffer));
+                    printf("%s\n",readbuffer );
+                    char *p=strtok (readbuffer, " ");
+                    while (p != NULL){
+                      arr2[i2++] = p;
+                      p = strtok (NULL," ");
+                  }
+                  strcpy(turno,arr2[0]);
+                  if (strcmp(arr2[1],"-1")!=0) {
+                    LList_Actualizacion(Mazo,arr2[1],arr2[2],arr2[3]);
+                  }
+                  if (strcmp(arr2[4],"-1")!=0 && strcmp(arr2[5],"-1")!=0 && strcmp(arr2[6],"-1")!=0) {
+                    Carta* Cartita=(Carta*)malloc(sizeof(Carta));
+                    *Cartita = new_Carta(arr2[5],arr2[6],arr2[4]);
+                    LList_remove(Ultima);
+                		LList_append(Ultima,*Cartita);
+                    free(Cartita);
+                  }
+                  }
+                  f++;
+                  turno2(Mazo,J1,Ultima,turno,fd12);
+
+
+                }
+            LList_clear(J1);
+            free(J1);
+          }
+          else {
+            /* turno 4*/
+              sleep(3);
+              LinkedList* J4=(LinkedList*)malloc(sizeof(LinkedList));
+              *J4=new_LList(4);
+              for ( count = 0; count < 2; count++) {
+             		Robar(Mazo,J4);}
+                while (strcmp(Juego_terminado,"1")==0 && J4->size>0)  {
+                  /*TURNO */
+                  int i2=0;
+                  close(fd34[1]);
+                  read(fd34[0], readbuffer, sizeof(readbuffer));
+                  printf("%s\n",readbuffer );
+
+                  char *p=strtok (readbuffer, " ");
+                  while (p != NULL){
+                    arr2[i2++] = p;
+                    p = strtok (NULL," ");
+                }
+                strcpy(turno,arr2[0]);
+                if (strcmp(arr2[1],"-1")!=0) {
+                  LList_Actualizacion(Mazo,arr2[1],arr2[2],arr2[3]);
+                }
+                if (strcmp(arr2[4],"-1")!=0 && strcmp(arr2[5],"-1")!=0 && strcmp(arr2[6],"-1")!=0) {
+                  Carta* Cartita=(Carta*)malloc(sizeof(Carta));
+                  *Cartita = new_Carta(arr2[5],arr2[6],arr2[4]);
+                  LList_remove(Ultima);
+              		LList_append(Ultima,*Cartita);
+                  free(Cartita);
+                }
+                  turno2(Mazo,J4,Ultima,turno,fd41);
+                  }
+              LList_clear(J4);
+              free(J4);
+          }
       }
     }
     else{
